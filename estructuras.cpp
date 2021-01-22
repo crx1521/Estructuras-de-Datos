@@ -140,11 +140,11 @@ void salir(){
 	getch();
 }	
 
-int main(){ //funcion principal
+int main(){ 
 	
-	int opcion; //variable para switch
+	int opcion; 
 
-	do {//ciclo de ejecucion fijo
+	do {
 		system("color 0E");  
 		system("cls"); 
 		
