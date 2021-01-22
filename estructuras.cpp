@@ -1,72 +1,70 @@
-#include <stdio.h> //librerias que usaremos 
+#include <stdio.h>  
 #include <stdlib.h>
 #include <iostream>
 #include <conio.h>
 #include <ctime>
 
-/*Ruben Vicente Fuentes Rodriguez
-Entregable 1
-Programa 2 Estructuras*/
-
-using namespace std; //se declara namespace para poder usar cin y cout
 
 
-struct datos{ //Estructura principal
+using namespace std; 
+
+
+struct datos{ 
 	
-	char nombre[35]; //variable tipo texto definida a 35 espacios
-	int edad, faltas; // variables enteras
-	float promedio; //variable flotante (decimales)
+	char nombre[35]; 
+	int edad, faltas; 
+	float promedio;
 	
-}alumnos[100]; //arreglo principal para los datos
+}alumnos[100]; 
 
-int indice; //definimos globalmente la variable indice
+int indice; 
 
 
-void capturar (){ //funcion para capturar datos
+void capturar (){ 
 		
 		system("color 2f");
 		printf("\nCuantos Alumnos vas a registrar?: "); 
-		scanf("%d",&indice); //registramos en la variable indice cuanto ocuparemos del arreglo
+		scanf("%d",&indice); 
 		
-		for(int i=0; i<indice; i++){ //Bucle For que depende de lo que indicamos en indice
+		for(int i=0; i<indice; i++){ 
 		fflush(stdin);
-		printf("____________________________________________\n"); //lineas esteticas
-		printf("Ingresa el Nombre del Alumno #%d: ",(i+1)); //inicializamos en 1 la variable i para no empzar de 0
-		gets(alumnos[i].nombre); //guardamos como cadena de texto en la variable nombre
-		fflush(stdin); // Limpiamos memoria para no llenar el Buffer
+		printf("____________________________________________\n"); 
+		printf("Ingresa el Nombre del Alumno #%d: ",(i+1)); 
+		gets(alumnos[i].nombre); 
+		fflush(stdin); 
 		printf("Ingresa la edad del Alumno #%d: ",(i+1)); 
-		scanf("%d",&alumnos[i].edad); //guardamos como entero en variable edad
+		scanf("%d",&alumnos[i].edad); 
 		fflush(stdin);
 		printf("Ingresa las faltas del Alumno #%d: ",(i+1));
-		scanf("%d",&alumnos[i].faltas); //guardamos como entero en variable faltas
+		scanf("%d",&alumnos[i].faltas); 
 		fflush(stdin);
 		printf("Ingresa el Promedio del Alumno #%d: ",(i+1));
-		scanf("%f",&alumnos[i].promedio); //guardamos como decimal en variable promedio
+		scanf("%f",&alumnos[i].promedio); 
 		fflush(stdin);		
 	}
 }
 
-void mostrartodos(){ //funcion para mostrar datos
+void mostrartodos(){ 
 	
 	printf("Mostrando todos los datos de los alumnos\n");
-	for(int i=0; i<indice; i++){ //Buscamos en el indice todos lo que llevamos registrado 
-		printf("\n\n____________________________________________\n"); //lineas esteticas
-		printf("\nAlumno: #%d",(i+1)); //Se busca desde 1 en vez desde 0 por cuestiones esteticas
-		printf("\n\nNombre: %s",alumnos[i].nombre); //Las coincidencias con el arreglo se muestran en pantalla
+	for(int i=0; i<indice; i++){ 
+		printf("\n\n____________________________________________\n");
+		printf("\nAlumno: #%d",(i+1)); 
+		printf("\n\nNombre: %s",alumnos[i].nombre); 
 		printf("\nEdad: %d",alumnos[i].edad);
 		printf("\nFaltas: %d",alumnos[i].faltas);
-		printf("\nPromedio: %.2f",alumnos[i].promedio); //En promedio se establecen 2 decimales
+		printf("\nPromedio: %.2f",alumnos[i].promedio); 
 		printf("\n____________________________________________\n");		
 	}
 }
-void buscaredad(){ //Funcion para busqueda por edad
-	int ed, encontrado=0; // se establecen variables auxiliares
+void buscaredad(){ 
+	int ed, encontrado=0; 
 	printf("Ingresa la edad a Buscar: "); 
-	scanf("%d",&ed); //el criterio a buscar se guarda en la variable ed
-	for(int i=0; i<indice; i++){ //comenzamos a discriminar datos con el bucle for 1 a 1
-		if(alumnos[i].edad==ed){ //el valor del criterio debe ser igual a algun campo del arreglo
-			encontrado=1; //En caso de haber coincidencias se muestran los valores
-			printf("\n\n____________________________________________\n"); //se muestran los datos en el orden descrito
+	scanf("%d",&ed); 
+	for(int i=0; i<indice; i++){ 
+		if(alumnos[i].edad==ed){ 
+			encontrado=1; 
+			printf("\n\n____________________________________________\n");
 			printf("\nAlumno: #%d",(i+1));
 			printf("\n\nNombre: %s",alumnos[i].nombre); 
 			printf("\nEdad: %d",alumnos[i].edad);
@@ -76,20 +74,20 @@ void buscaredad(){ //Funcion para busqueda por edad
 		}
 		
 	}
-	if(encontrado==0){ //En caso de que el criterio no coincida se manda texto de que no ha sido encontrado
+	if(encontrado==0){ 
 		printf("No hay alumnos con la Edad %d\n",ed);
 	}
 }
 
-void buscarpromedio(){ //Funcion para busqueda por edad
-	int encontrado=0; // se establecen variables auxiliares
+void buscarpromedio(){ 
+	int encontrado=0; 
 	float prom;
 	printf("Ingresa el Promedio a Buscar: ");
-	scanf("%f",&prom); //el criterio a buscar se guarda en la variable prom
-	for(int i=0; i<indice; i++){ //comenzamos a discriminar datos con el bucle for 1 a 1
-		if(alumnos[i].promedio==prom){  //el valor del criterio debe ser igual a algun campo del arreglo
-			encontrado=1; //En caso de haber coincidencias se muestran los valores
-			printf("\n\n____________________________________________\n"); //se muestran los datos en el orden descrito
+	scanf("%f",&prom); 
+	for(int i=0; i<indice; i++){ 
+		if(alumnos[i].promedio==prom){  
+			encontrado=1; 
+			printf("\n\n____________________________________________\n"); 
 			printf("\nAlumno: #%d",(i+1));
 			printf("\n\nNombre: %s",alumnos[i].nombre);
 			printf("\nEdad: %d",alumnos[i].edad);
@@ -99,28 +97,27 @@ void buscarpromedio(){ //Funcion para busqueda por edad
 		}
 		
 	}
-	if(encontrado==0){ //En caso de que el criterio no coincida se manda texto de que no ha sido encontrado
+	if(encontrado==0){ 
 		printf("No hay alumnos con el Promedio solicitado %d\n",prom);
 	}	
 }
 
-void reins(){ //Funcion para calculo de reinscripciones
+void reins(){ 
     
-    int a=1800; //se define el costo de reinscripcion
-    int z,y; //se definen variables auxiliares
-    int *ap; //se declara puntero -> paso por valor
+    int a=1800; 
+    int z,y; 
+    int *ap; 
         
-    ap = &a; //se asocia puntero con variable principal
-    z=indice;//esta variable nos dice cuantos alumnos hay registrados
-    y=z*a; //variable para operacion simple
+    ap = &a; 
+    z=indice;
+    y=z*a; 
      
-        cout << "Alumnos Registrados: " << z << "\n"; //salida a pantalla 
-        cout << "\nCosto por Reiscripcion: $ " << *ap << "\n"; //Se muestra valor actual de puntero
-        cout << "\nEl Total de reinscripciones sera:$" << y << "\n"; //Se muestra la variable con el calculo nuevo 
+        cout << "Alumnos Registrados: " << z << "\n";
+        cout << "\nCosto por Reiscripcion: $ " << *ap << "\n";
+        cout << "\nEl Total de reinscripciones sera:$" << y << "\n"; 
 }
 
-void salir(){ //Funcion para salir 
-	
+void salir(){ 
 	system("cls");
 	system("color 1E");
 	printf("\n\n\n");
@@ -148,10 +145,10 @@ int main(){ //funcion principal
 	int opcion; //variable para switch
 
 	do {//ciclo de ejecucion fijo
-		system("color 0E");  //color de consola y texto
-		system("cls"); //limpiar pantalla
+		system("color 0E");  
+		system("cls"); 
 		
-		printf("       **********************************\n");	 //detalles esteticos
+		printf("       **********************************\n");	
 		printf("       *                                *\n");
 		printf("       *       Sistema de Archivo y     *\n");
 		printf("       *        Busqueda de Alumnos     *\n");
@@ -159,14 +156,14 @@ int main(){ //funcion principal
 		printf("       *                                *\n");
 		printf("       **********************************\n\n");
 		printf("         Ruben Vicente Fuentes Rodriguez \n");
-		time_t tiempo = time(0); //funcion para hora y fecha
-		tm *tlocal = localtime(&tiempo); //puntero para definir fecha y hora
-		char output[128]; //espacio maximo de caracteres de fecha
-		strftime(output,128,"             %d/%m/%y      %H:%M:%S",tlocal); //se coloca la fecha definida
+		time_t tiempo = time(0); 
+		tm *tlocal = localtime(&tiempo); 
+		char output[128]; 
+		strftime(output,128,"             %d/%m/%y      %H:%M:%S",tlocal); 
 		cout<<"\n"<<output<<endl;
 		
-		printf("\n\n---------------- Menu de Opciones ---------------\n|"); //texto en pantalla tipo menu
-		printf("                                               |\n|   1. Captura de Alumnos                       | \n"); //(perdon por tantas lineas, para mi es mas visual asi
+		printf("\n\n---------------- Menu de Opciones ---------------\n|"); 
+		printf("                                               |\n|   1. Captura de Alumnos                       | \n"); 
 		printf("|   2. Mostrar todos los Alumnos                |\n");
 		printf("|   3. Mostrar alumnos por Edad                 |\n");             
 		printf("|   4. Mostrar alumnos por Promedio             |\n");		
@@ -176,33 +173,33 @@ int main(){ //funcion principal
 		
 		printf(" Elija una opcion: ");
 	
-		scanf("%d",&opcion); //guardamos entrada del teclado en la variable opcion
-		system("cls"); //limpiamos pantalla
+		scanf("%d",&opcion); 
+		system("cls"); 
 		
-		switch(opcion){ //switch para elegir casos de acuerdo a funciones
+		switch(opcion){ 
 			
-			case 1:capturar(); //casos de la estructura switch
-				break; //freno de caso 
+			case 1:capturar(); 
+				break; 
 			case 2:mostrartodos(); 
 				break;
-			case 3:buscaredad();//me gusto aprender a hacerlo porque no lo habia hecho asi
+			case 3:buscaredad();
 				break;
-			case 4:buscarpromedio();//se ve mas limpio
+			case 4:buscarpromedio();
 				break;					
 			case 5:reins();
 				break;	
 			case 6:salir();
 				break;			
-			default: printf("Opcion incorrecta"); //opcion default 
+			default: printf("Opcion incorrecta"); 
 		}
 	
-		getch(); //palabra reservada para esperar accion de usuario
-	}while(opcion!=6); // Bucle que continua mientras la opcion sea diferente a 6
+		getch(); 
+	}while(opcion!=6); 
 	
 	
-		system("cls"); //Limpiamos pantalla
+		system("cls"); 
 	
-	system("pause"); //pausa de la ejecucion
-	return 0; //retorno 0 que indica que ha llegado a su fin
+	system("pause"); 
+	return 0; 
 	
-		} //llaves pertenercientes a funciones y ciclos
+		} 
